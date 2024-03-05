@@ -1,14 +1,16 @@
 #!/bin/sh
 
-clear_screen() {
-    printf "\033c"
-}
-
 create_basic_structure_project() {
-    clear_screen
+    clear
 
-    LANGUAGE=(gum choose "NodeJS" "Python")
-    echo -e "Well, it is nice to meet you, $(gum style --foreground 212 "$LANGUAGE")."
+    echo "Choose the service language?"
+    LANGUAGE=$(gum choose "NodeJS" "Python")
+    clear
+
+    echo "What is the name of the service?"
+    PROJECT_NAME=$(gum input --placeholder "project_name")
+
+    mkdir "$PROJECT_NAME" && cd "$PROJECT_NAME"
 }
 
 main() {
